@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Course Counting</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: darkcyan;
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container h1 {
+            color: #fff;
+            font-family: Arial;
+            font-size: 50px;
+            margin: 10px 0;
+        }
+
+        .container input {
+            font-size: 30px;
+            text-align: center;
+            margin-top: 10px;
+            width: 60vw;
+            max-width: 600px;
+        }
+
+        .container button {
+            margin-top: 30px;
+            width: 60vw;
+            max-width: 350px;
+            font-size: 30px;
+            background-color: #f7ead0;
+            color: #2b2b2b;
+            border-radius: 15px;
+        }
+
+        .container span {
+            color: #fff;
+            margin-top: 20px;
+            font-size: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <div id="app" class="container">
+        <h1>{{ message }} hours</h1>
+        <h1>{{ message2 }} days</h1>
+        <input v-model="message" placeholder="Hours" type="number">
+        <input v-model="message2" placeholder="Days" type="number">
+        <button v-on:click="countingHours">SUBMIT</button>
+        <span v-if="seen">{{ message3 }}</span>
+    </div>
+
+
+    <script>
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '',
+                message2: '',
+                message3: '',
+                seen: false,
+                countedInfo: ''
+            },
+            methods: {
+                countingHours: function () {
+                    this.message3 = (this.message / this.message2).toFixed(2);
+                    this.seen = true
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
